@@ -337,7 +337,7 @@ button,input,select,textarea{font-family:var(--font);}
             <label style="margin:0;">Nhóm báo giá</label>
             <span id="custLockBadge" style="font-size: 0.72rem; background: var(--brand); color: rgb(255, 255, 255); padding: 1px 7px; border-radius: 99px; font-weight: 600;">🔒 Đã khoá</span>
           </div>
-          <select id="dc_custType" onchange="DC.onCustChange()"  disabled="" style="opacity: 0.75; cursor: not-allowed;">
+          <select id="dc_custType" onchange="DC.onCustChange()" disabled="" style="opacity: 0.75; cursor: not-allowed;">
             <option value="normal">Khách thường</option>
             <option value="agency">Khách đại lý</option>
           </select>
@@ -361,12 +361,12 @@ button,input,select,textarea{font-family:var(--font);}
           <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
             <div style="display:flex;flex-direction:column;gap:2px;">
               <span style="font-size:.65rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.3px;">Số tem / tờ</span>
-              <span id="dc_mini_persheet" style="font-size:1.1rem;font-weight:800;color:var(--green);">30 tem/tờ</span>
+              <span id="dc_mini_persheet" style="font-size:1.1rem;font-weight:800;color:var(--green);">—</span>
             </div>
             <div style="width:1px;height:32px;background:var(--border);"></div>
             <div style="display:flex;flex-direction:column;gap:2px;">
               <span style="font-size:.65rem;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.3px;">Số tờ cần in</span>
-              <span id="dc_mini_sheets" style="font-size:1.1rem;font-weight:800;color:var(--brand);">34 tờ</span>
+              <span id="dc_mini_sheets" style="font-size:1.1rem;font-weight:800;color:var(--brand);">—</span>
             </div>
           </div>
         </div>
@@ -399,21 +399,11 @@ button,input,select,textarea{font-family:var(--font);}
         </div>
         <div class="fg">
           <label>Cán màng / Lớp phủ</label>
-          <select id="dc_lam" onchange="DC.calc()">
-            <option value="none">Không cán màng</option>
-            <option value="matte_lam">Cán mờ (Matte)</option>
-            <option value="glossy_lam">Cán bóng (Glossy)</option>
-          </select>
+          <select id="dc_lam" onchange="DC.calc()"><option value="none" selected="">Không cán màng</option><option value="matte_lam">Cán mờ (Matte)</option><option value="glossy_lam">Cán bóng (Glossy)</option></select>
         </div>
         <div class="fg">
           <label>Gia công thêm</label>
-          <select id="dc_proc" onchange="DC.calc()">
-            <option value="none">Không</option>
-            <option value="foil">Ép kim (Hot foil)</option>
-            <option value="vardata1">Data biến đổi – 1 vị trí</option>
-            <option value="vardata2">Data biến đổi – 2 vị trí</option>
-            <option value="vardataM">Data biến đổi – Nhiều vị trí</option>
-          </select>
+          <select id="dc_proc" onchange="DC.calc()"><option value="none" selected="">Không</option><option value="vardata1">Data biến đổi – 1 vị trí</option><option value="vardata2">Data biến đổi – 2 vị trí</option><option value="vardataM">Data biến đổi – Nhiều vị trí</option></select>
         </div>
         <!-- Action buttons ngay dưới gia công -->
         <div style="display:flex;gap:8px;margin-top:4px;">
@@ -1022,31 +1012,31 @@ button,input,select,textarea{font-family:var(--font);}
           </td>
         </tr><tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px 10px;">
-            <input value="Ép kim (Hot foil)" onchange="DC.Config._setFeeName('proc',1,this.value)" style="width:100%;min-width:120px;padding:5px 9px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:600;color:var(--text1);font-family:var(--font);background:var(--surface);">
+            <input value="Data biến đổi – 1 vị trí" onchange="DC.Config._setFeeName('proc',1,this.value)" style="width:100%;min-width:120px;padding:5px 9px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:600;color:var(--text1);font-family:var(--font);background:var(--surface);">
           </td>
           <td style="padding:8px 6px;text-align:center;">
-            <select onchange="DC.Config._setFeeCalcType('proc',1,this.value)" style="padding:4px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;font-weight:700;color:#7c3aed;font-family:var(--font);background:#f8fafc;">
+            <select onchange="DC.Config._setFeeCalcType('proc',1,this.value)" style="padding:4px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;font-weight:700;color:#b45309;font-family:var(--font);background:#f8fafc;">
               <option value="per_sheet">đ / tờ</option>
               <option value="per_unit">đ / tem</option>
-              <option value="pct">% tổng</option>
-              <option value="area" selected="">đ / cm²</option>
+              <option value="pct" selected="">% tổng</option>
+              <option value="area">đ / cm²</option>
             </select>
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="2.5" min="0" step="100" onchange="DC.Config._setFeePrice('proc',1,this.value)" onfocus="this.select()" style="width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:700;text-align:right;font-family:var(--font);color:var(--brand);">
+            <input type="number" value="25" min="0" step="1" onchange="DC.Config._setFeePrice('proc',1,this.value)" onfocus="this.select()" style="width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:700;text-align:right;font-family:var(--font);color:var(--brand);">
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="300000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMin('proc',1,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
+            <input type="number" value="200000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMin('proc',1,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="0" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMax('proc',1,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
+            <input type="number" value="750000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMax('proc',1,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
           </td>
           <td style="padding:8px 6px;text-align:center;">
             <button onclick="DC.Config._removeFee('proc',1)" style="width:26px;height:26px;border:none;background:#fee2e2;color:var(--red);border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;">✕</button>
           </td>
         </tr><tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px 10px;">
-            <input value="Data biến đổi – 1 vị trí" onchange="DC.Config._setFeeName('proc',2,this.value)" style="width:100%;min-width:120px;padding:5px 9px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:600;color:var(--text1);font-family:var(--font);background:var(--surface);">
+            <input value="Data biến đổi – 2 vị trí" onchange="DC.Config._setFeeName('proc',2,this.value)" style="width:100%;min-width:120px;padding:5px 9px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:600;color:var(--text1);font-family:var(--font);background:var(--surface);">
           </td>
           <td style="padding:8px 6px;text-align:center;">
             <select onchange="DC.Config._setFeeCalcType('proc',2,this.value)" style="padding:4px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;font-weight:700;color:#b45309;font-family:var(--font);background:#f8fafc;">
@@ -1057,20 +1047,20 @@ button,input,select,textarea{font-family:var(--font);}
             </select>
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="25" min="0" step="1" onchange="DC.Config._setFeePrice('proc',2,this.value)" onfocus="this.select()" style="width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:700;text-align:right;font-family:var(--font);color:var(--brand);">
+            <input type="number" value="35" min="0" step="1" onchange="DC.Config._setFeePrice('proc',2,this.value)" onfocus="this.select()" style="width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:700;text-align:right;font-family:var(--font);color:var(--brand);">
           </td>
           <td style="padding:8px 6px;">
             <input type="number" value="200000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMin('proc',2,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="750000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMax('proc',2,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
+            <input type="number" value="1000000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMax('proc',2,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
           </td>
           <td style="padding:8px 6px;text-align:center;">
             <button onclick="DC.Config._removeFee('proc',2)" style="width:26px;height:26px;border:none;background:#fee2e2;color:var(--red);border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;">✕</button>
           </td>
         </tr><tr style="border-bottom:1px solid var(--border);">
           <td style="padding:8px 10px;">
-            <input value="Data biến đổi – 2 vị trí" onchange="DC.Config._setFeeName('proc',3,this.value)" style="width:100%;min-width:120px;padding:5px 9px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:600;color:var(--text1);font-family:var(--font);background:var(--surface);">
+            <input value="Data biến đổi – Nhiều vị trí" onchange="DC.Config._setFeeName('proc',3,this.value)" style="width:100%;min-width:120px;padding:5px 9px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:600;color:var(--text1);font-family:var(--font);background:var(--surface);">
           </td>
           <td style="padding:8px 6px;text-align:center;">
             <select onchange="DC.Config._setFeeCalcType('proc',3,this.value)" style="padding:4px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;font-weight:700;color:#b45309;font-family:var(--font);background:#f8fafc;">
@@ -1081,40 +1071,16 @@ button,input,select,textarea{font-family:var(--font);}
             </select>
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="35" min="0" step="1" onchange="DC.Config._setFeePrice('proc',3,this.value)" onfocus="this.select()" style="width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:700;text-align:right;font-family:var(--font);color:var(--brand);">
+            <input type="number" value="50" min="0" step="1" onchange="DC.Config._setFeePrice('proc',3,this.value)" onfocus="this.select()" style="width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:700;text-align:right;font-family:var(--font);color:var(--brand);">
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="200000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMin('proc',3,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
+            <input type="number" value="300000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMin('proc',3,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
           </td>
           <td style="padding:8px 6px;">
-            <input type="number" value="1000000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMax('proc',3,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
+            <input type="number" value="1500000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMax('proc',3,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
           </td>
           <td style="padding:8px 6px;text-align:center;">
             <button onclick="DC.Config._removeFee('proc',3)" style="width:26px;height:26px;border:none;background:#fee2e2;color:var(--red);border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;">✕</button>
-          </td>
-        </tr><tr style="border-bottom:1px solid var(--border);">
-          <td style="padding:8px 10px;">
-            <input value="Data biến đổi – Nhiều vị trí" onchange="DC.Config._setFeeName('proc',4,this.value)" style="width:100%;min-width:120px;padding:5px 9px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:600;color:var(--text1);font-family:var(--font);background:var(--surface);">
-          </td>
-          <td style="padding:8px 6px;text-align:center;">
-            <select onchange="DC.Config._setFeeCalcType('proc',4,this.value)" style="padding:4px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;font-weight:700;color:#b45309;font-family:var(--font);background:#f8fafc;">
-              <option value="per_sheet">đ / tờ</option>
-              <option value="per_unit">đ / tem</option>
-              <option value="pct" selected="">% tổng</option>
-              <option value="area">đ / cm²</option>
-            </select>
-          </td>
-          <td style="padding:8px 6px;">
-            <input type="number" value="50" min="0" step="1" onchange="DC.Config._setFeePrice('proc',4,this.value)" onfocus="this.select()" style="width:90px;padding:5px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:.82rem;font-weight:700;text-align:right;font-family:var(--font);color:var(--brand);">
-          </td>
-          <td style="padding:8px 6px;">
-            <input type="number" value="300000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMin('proc',4,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
-          </td>
-          <td style="padding:8px 6px;">
-            <input type="number" value="1500000" min="0" step="1000" placeholder="0" onchange="DC.Config._setFeeMax('proc',4,this.value)" onfocus="this.select()" style="width:80px;padding:5px 7px;border:1.5px solid var(--border);border-radius:6px;font-size:.78rem;text-align:right;font-family:var(--font);">
-          </td>
-          <td style="padding:8px 6px;text-align:center;">
-            <button onclick="DC.Config._removeFee('proc',4)" style="width:26px;height:26px;border:none;background:#fee2e2;color:var(--red);border-radius:6px;cursor:pointer;font-size:.8rem;font-weight:900;display:flex;align-items:center;justify-content:center;">✕</button>
           </td>
         </tr></tbody>
           </table>
@@ -1125,7 +1091,7 @@ button,input,select,textarea{font-family:var(--font);}
           <button class="btn btn-p btn-sm" onclick="DC.Config.saveFees()">💾 Lưu Phụ Phí</button>
           <button class="btn btn-red btn-sm" onclick="DC.Config.resetFees()">↩ Reset</button>
         </div>
-        <div class="save-msg" id="dc_feesSaveMsg">✅ Đã lưu phụ phí!</div>
+        <div class="save-msg" id="dc_feesSaveMsg" style="display: none;">✅ Đã lưu phụ phí!</div>
       </div>
 
       <!-- GIẢM GIÁ ĐẠI LÝ -->
@@ -1258,7 +1224,7 @@ button,input,select,textarea{font-family:var(--font);}
 </div>
 
 <!-- ── html2canvas ── -->
-<script id="__cfg_DECAL__" type="application/json">{"_version":"v4.0","_module":"DECAL","_exported":"2026-05-14T02:17:21.911Z","dc_base":"{\"1\":40000,\"5\":30000,\"10\":15000,\"50\":9000,\"100\":7500,\"200\":7000,\"300\":6500,\"500\":6000,\"700\":5500,\"1000\":5000,\"2000\":4800,\"3000\":4500,\"5000\":4000,\"10000\":3500,\"20000\":3000}","dc_cm":"fixed","dc_pm":"\"auto\"","brand_cfg":"{\"name\":\"BÁO GIÁ DECAL TEM NHÃN RIRO\",\"abbr\":\"RR\",\"tagline\":\"Hệ thống báo giá in ấn chuyên nghiệp\",\"address\":\"61 Phạm Thanh , Phường Đạo Thạnh , Đồng Tháp\",\"phone\":\"08.1234.3639 - 0829.740.168 - 0334.642.639\"}","show_internal":"0","show_sheet_info":"0","dc_custLock":"\"agency\""}</script>
+<script id="__cfg_DECAL__" type="application/json">{"_version":"v4.0","_module":"DECAL","_exported":"2026-05-15T09:53:45.691Z","dc_base":"{\"1\":40000,\"5\":30000,\"10\":15000,\"50\":9000,\"100\":7500,\"200\":7000,\"300\":6500,\"500\":6000,\"700\":5500,\"1000\":5000,\"2000\":4800,\"3000\":4500,\"5000\":4000,\"10000\":3500,\"20000\":3000}","dc_mf":"{\"paper\":0,\"kraft\":500,\"matte\":1500,\"glossy\":2000,\"clear\":3000,\"silver\":3500,\"7color\":3000,\"destroy\":20000}","dc_lf":"[{\"id\":\"none\",\"name\":\"Không cán màng\",\"calcType\":\"per_sheet\",\"price\":0,\"min\":0,\"max\":0},{\"id\":\"matte_lam\",\"name\":\"Cán mờ (Matte)\",\"calcType\":\"per_sheet\",\"price\":700,\"min\":20000,\"max\":0},{\"id\":\"glossy_lam\",\"name\":\"Cán bóng (Glossy)\",\"calcType\":\"per_sheet\",\"price\":700,\"min\":20000,\"max\":0}]","dc_pf":"[{\"id\":\"none\",\"name\":\"Không\",\"calcType\":\"per_sheet\",\"price\":0,\"min\":0,\"max\":0},{\"id\":\"vardata1\",\"name\":\"Data biến đổi – 1 vị trí\",\"calcType\":\"pct\",\"price\":25,\"min\":200000,\"max\":750000},{\"id\":\"vardata2\",\"name\":\"Data biến đổi – 2 vị trí\",\"calcType\":\"pct\",\"price\":35,\"min\":200000,\"max\":1000000},{\"id\":\"vardataM\",\"name\":\"Data biến đổi – Nhiều vị trí\",\"calcType\":\"pct\",\"price\":50,\"min\":300000,\"max\":1500000}]","dc_cm":"fixed","dc_pm":"\"auto\"","brand_cfg":"{\"name\":\"BÁO GIÁ DECAL TEM NHÃN RIRO\",\"abbr\":\"RR\",\"tagline\":\"Hệ thống báo giá in ấn chuyên nghiệp\",\"address\":\"61 Phạm Thanh , Phường Đạo Thạnh , Đồng Tháp\",\"phone\":\"08.1234.3639 - 0829.740.168 - 0334.642.639\"}","show_internal":"0","show_sheet_info":"0","dc_custLock":"\"agency\""}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 /* ══ PRE-INIT RAM STORE ══
@@ -2179,3 +2145,4 @@ const SYNC=(()=>{
 window.SYNC=SYNC;
 
 </script>
+</body></html>
